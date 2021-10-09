@@ -46,7 +46,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: job1
     env:
-      artefact_path: dist/artefact2.txt
+      artefact_path: new_path2a
+      fname: artefact.txt
     steps:
     - name: Download artefact
       uses: actions/download-artifact@v2
@@ -55,25 +56,27 @@ jobs:
         path: ${{ env.artefact_path }}
     - name: Check that artefact downloaded
       run: |-
-        ls dist/*;
-        ! [ -f ${{ env.artefact_path }} ] && echo "artefact not downloaded!" && exit 1;
+        ls;
+        ls ${{ env.artefact_path }}/*;
+        ! [ -f ${{ env.artefact_path }}/${{ env.fname }} ] && echo "artefact not downloaded!" && exit 1
     - name: Check content of artefact
       run: cat ${{ env.artefact_path }}
     - name: Update artefact
       run: |-
-        echo "new content" >| ${{ env.artefact_path }};
+        echo "new content" >| ${{ env.artefact_path }}/${{ env.fname }}
     - name: Check content of artefact
-      run: cat ${{ env.artefact_path }}
+      run: cat ${{ env.artefact_path }}/${{ env.fname }}
     - name: Reupload artefact
       uses: actions/upload-artifact@v2
       with:
         name: text_artefact
-        path: dist/artefact.txt
+        path: ${{ env.artefact_path }}/${{ env.fname }}
   job2b:
     runs-on: ubuntu-latest
     needs: job2a
     env:
-      artefact_path: dist/artefact.txt
+      artefact_path: new_path2b
+      fname: artefact.txt
     steps:
     - name: Download artefact
       uses: actions/download-artifact@v2
@@ -82,20 +85,17 @@ jobs:
         path: ${{ env.artefact_path }}
     - name: Check that artefact downloaded
       run: |-
-        ls dist/*;
-        ! [ -f ${{ env.artefact_path }} ] && echo "artefact not downloaded!" && exit 1;
+        ls;
+        ls ${{ env.artefact_path }}/*;
+        ! [ -f ${{ env.artefact_path }}/${{ env.fname }} ] && echo "artefact not downloaded!" && exit 1
     - name: Check content of artefact
-      run: cat ${{ env.artefact_path }}
-    - name: Reupload artefact
-      uses: actions/upload-artifact@v2
-      with:
-        name: text_artefact
-        path: dist/artefact.txt
+      run: cat ${{ env.artefact_path }}/${{ env.fname }}
   job3:
     runs-on: ubuntu-latest
     needs: job1
     env:
-      artefact_path: dist/artefact.txt
+      artefact_path: new_path3
+      fname: artefact.txt
     steps:
     - name: Download artefact
       uses: actions/download-artifact@v2
@@ -104,7 +104,8 @@ jobs:
         path: ${{ env.artefact_path }}
     - name: Check that artefact downloaded
       run: |-
-        ls dist/*;
-        ! [ -f ${{ env.artefact_path }} ] && echo "artefact not downloaded!" && exit 1;
+        ls;
+        ls ${{ env.artefact_path }}/*;
+        ! [ -f ${{ env.artefact_path }}/${{ env.fname }} ] && echo "artefact not downloaded!" && exit 1
     - name: Check content of artefact
-      run: cat ${{ env.artefact_path }}
+      run: cat ${{ env.artefact_path }}/${{ env.fname }}
