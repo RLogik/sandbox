@@ -58,7 +58,7 @@ jobs:
       run: |-
         ls;
         ls ${{ env.artefact_path }}/*;
-        ! [ -f ${{ env.artefact_path }}/${{ env.fname }} ] && echo "artefact not downloaded!" && exit 1
+        [ -f ${{ env.artefact_path }}/${{ env.fname }} ] && echo "artefact successfully downloaded" || exit 1
     - name: Check content of artefact
       run: cat ${{ env.artefact_path }}
     - name: Update artefact
@@ -87,7 +87,7 @@ jobs:
       run: |-
         ls;
         ls ${{ env.artefact_path }}/*;
-        ! [ -f ${{ env.artefact_path }}/${{ env.fname }} ] && echo "artefact not downloaded!" && exit 1
+        [ -f ${{ env.artefact_path }}/${{ env.fname }} ] && echo "artefact successfully downloaded" || exit 1
     - name: Check content of artefact
       run: cat ${{ env.artefact_path }}/${{ env.fname }}
   job3:
@@ -106,6 +106,6 @@ jobs:
       run: |-
         ls;
         ls ${{ env.artefact_path }}/*;
-        ! [ -f ${{ env.artefact_path }}/${{ env.fname }} ] && echo "artefact not downloaded!" && exit 1
+        [ -f ${{ env.artefact_path }}/${{ env.fname }} ] && echo "artefact successfully downloaded" || exit 1
     - name: Check content of artefact
       run: cat ${{ env.artefact_path }}/${{ env.fname }}
