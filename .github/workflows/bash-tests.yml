@@ -2,17 +2,21 @@ name: Bash tests
 on:
   workflow_dispatch:
     inputs:
-      trigger: # usage
+      trigger:
         description: 'Set this to call the runner'
         default:     'on'
         required:    true
 jobs:
   job1:
     runs-on: ubuntu-latest
+    env:
+      colour: Red
     steps:
     - uses: actions/checkout@v2
       with:
         ref: master
+    - name: Test environment
+      run: echo ${{ env.colour }}
     - name: Check current path
       run: pwd
     - name: Check what files exists
