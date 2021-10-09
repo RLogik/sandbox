@@ -14,9 +14,12 @@ on:
         default:     'max mustermann'
         required:    true
 jobs:
-  hello:
+  job1:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: master
     - name: Grant execution rights
       run: chmod +x scripts/*.sh
     - name: Run setup

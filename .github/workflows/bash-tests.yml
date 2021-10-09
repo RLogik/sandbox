@@ -4,9 +4,12 @@ on:
     branches:
       - master
 jobs:
-  hello:
+  job1:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: master
     - name: Check current path
       run: pwd
     - name: Check what files exists
