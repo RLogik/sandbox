@@ -95,14 +95,17 @@ function install_requirements_python() {
     _log_info "DEBUG 3";
     local line;
     while read line; do
-        _log_info "DEBUG 4";
+        _log_info "DEBUG 4a [$line]";
         line="$( _trim_trailing_comments "$line" )";
+        _log_info "DEBUG 4b [$line].";
         [ "$line" == "" ] && continue;
+        _log_info "DEBUG 4c";
         _log_info "Run \033[92;1mPIP\033[0m to install \033[93;1m$line\033[0m...";
         ( call_pipinstall "$line" ) && continue;
         has_problems=true;
         problem_packages+=( "$line" );
     done <<< "$( cat "$path" )";
+        _log_info "DEBUG 5";
 
     ( $has_problems ) && _log_fail "Something went wrong whilst using \033[92;1mPIP\033[0m to install: {\033[93;1m${problem_packages[*]}\033[0m}.";
 }
