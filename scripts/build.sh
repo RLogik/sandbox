@@ -21,12 +21,16 @@ option_venv="$( get_one_kwarg_space "$SCRIPTARGS" "-+venv" "true" )";
 
 if [ "$mode" == "version" ]; then
     run_display_version;
+    exit 0;
 elif [ "$mode" == "setup" ]; then
     run_setup;
+    exit 0;
 elif [ "$mode" == "dist-text" ]; then
     run_create_textartefact;
+    exit 0;
 elif [ "$mode" == "dist" ]; then
     run_create_artefact;
+    exit 0;
 else
     _log_error "Invalid argument to build script!";
     _cli_message "Call ./scripts/build.sh [--venv [true|false]] --mode [version|setup|dist|dist-text].";

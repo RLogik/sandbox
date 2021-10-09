@@ -2,10 +2,6 @@ name: Python tests
 on:
   workflow_dispatch:
     inputs:
-      use_venv: # usage
-        description: 'Whether or not to use python virtual environment'
-        default:     'false'
-        required:    true
       name:
         description: A cli input to be tested against the generated programme
         default:     'max mustermann'
@@ -26,7 +22,7 @@ jobs:
     - name: Grant execution rights
       run: chmod +x scripts/*.sh
     - name: Run setup
-      run: ./scripts/build.sh --venv ${{ github.event.inputs.use_venv }} --mode setup
+      run: ./scripts/build.sh --venv false --mode setup
     - name: Check if open source code works
       run: python3 src/main.py name="${{ github.event.inputs.name }}"
     - name: Check if artefact exists before creation
