@@ -3,6 +3,12 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
+    inputs:
+      trigger: # usage
+        description: 'Set this to call the runner'
+        default:     'on'
+        required:    true
 jobs:
   job1:
     runs-on: ubuntu-latest
