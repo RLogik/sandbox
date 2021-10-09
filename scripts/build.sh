@@ -22,7 +22,9 @@ option_venv="$( get_one_kwarg_space "$SCRIPTARGS" "-+venv" "true" )";
 if [ "$mode" == "version" ]; then
     run_display_version;
 elif [ "$mode" == "setup" ]; then
+    echo "DEBUG build.sh 1"
     run_setup;
+    echo "DEBUG build.sh 2"
 elif [ "$mode" == "dist-text" ]; then
     run_create_textartefact;
 elif [ "$mode" == "dist" ]; then
