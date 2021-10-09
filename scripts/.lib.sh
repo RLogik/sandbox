@@ -168,9 +168,7 @@ function run_setup() {
     _log_info "RUN SETUP";
     create_python_venv;
     _log_info "Check and install missing requirements";
-    echo "DEBUG lib.sh 1"
     install_requirements_v_python "$REQUIREMENTS_PY";
-    echo "DEBUG lib.sh 2"
 }
 
 function run_create_textartefact() {
