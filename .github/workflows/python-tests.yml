@@ -44,8 +44,6 @@ jobs:
         [ -f dist/sandboxapp ] && echo "artefact exists" || echo "artefact does not exists";
     - name: Check if programme works
       run: |-
-        source scripts/.lib.sh
-        use_python_venv_true && activate_python_venv
         dist/sandboxapp name="${{ github.event.inputs.name }}"
     - name: End of test
       run: echo "End"
