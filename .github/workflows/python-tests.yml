@@ -25,7 +25,7 @@ jobs:
       run: ./scripts/build.sh --venv true --mode setup
     - name: Check if open source code works
       run: |-
-        source .lib.sh
+        source scripts/.lib.sh
         which python3
         use_python_venv_true && activate_python_venv
         which python3
@@ -44,7 +44,7 @@ jobs:
         [ -f dist/sandboxapp ] && echo "artefact exists" || echo "artefact does not exists";
     - name: Check if programme works
       run: |-
-        source .lib.sh
+        source scripts/.lib.sh
         use_python_venv_true && activate_python_venv
         dist/sandboxapp name="${{ github.event.inputs.name }}"
     - name: End of test
