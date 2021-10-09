@@ -4,7 +4,7 @@ on:
     inputs:
       use_venv: # usage
         description: 'Whether or not to use python virtual environment'
-        default:     'true'
+        default:     'false'
         required:    true
       name:
         description: A cli input to be tested against the generated programme
