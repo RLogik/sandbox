@@ -60,7 +60,7 @@ jobs:
         ls ${{ env.artefact_path }}/*;
         [ -f ${{ env.artefact_path }}/${{ env.fname }} ] && echo "artefact successfully downloaded" || exit 1
     - name: Check content of artefact
-      run: cat ${{ env.artefact_path }}
+      run: cat ${{ env.artefact_path }}/${{ env.fname }}
     - name: Update artefact
       run: |-
         echo "new content" >| ${{ env.artefact_path }}/${{ env.fname }}
