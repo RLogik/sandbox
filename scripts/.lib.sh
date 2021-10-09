@@ -87,9 +87,15 @@ function install_requirements_python() {
     local has_problems=false;
     local problem_packages=();
 
+    _log_info "DEBUG 1";
     dos_to_unix "$path";
+    _log_info "DEBUG 2";
+    ls $path;
+    cat "$path";
+    _log_info "DEBUG 3";
     local line;
     while read line; do
+        _log_info "DEBUG 4";
         line="$( _trim_trailing_comments "$line" )";
         [ "$line" == "" ] && continue;
         _log_info "Run \033[92;1mPIP\033[0m to install \033[93;1m$line\033[0m...";
