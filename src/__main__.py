@@ -25,8 +25,9 @@ from src.main import enter;
 
 if __name__ == '__main__':
     tokens, kwargs = getCliArgs(*sys.argv[1:]);
-    kwargs = dict(
-        name = '<undefined>',
-        location = 'binary',
-    ) | kwargs;
+    kwargs = {
+        'name':     '<undefined>',
+        'location': 'binary',
+        **kwargs
+    };
     enter(*tokens, **kwargs);

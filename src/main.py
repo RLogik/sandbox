@@ -39,8 +39,9 @@ def enter(*_, name: str, location: str, **__):
 
 if __name__ == '__main__':
     tokens, kwargs = getCliArgs(*sys.argv[1:]);
-    kwargs = dict(
-        name = '<undefined>',
-        location = 'script',
-    ) | kwargs;
+    kwargs = {
+        'name':     '<undefined>',
+        'location': 'script',
+        **kwargs
+    };
     enter(*tokens, **kwargs);
