@@ -22,6 +22,8 @@
 
 !/src
 !/src/**/
+!/src/setup
+!/src/setup/VERSION
 !/src/**/*.py
 
 !/dist
