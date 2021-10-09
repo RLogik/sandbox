@@ -1,4 +1,4 @@
-name: Test workflow
+name: Bash tests
 on:
   push:
     branches:
@@ -10,7 +10,7 @@ jobs:
     - name: Check current path
       run: pwd
     - name: Check what files exists
-      run: ls {.,*}
+      run: ls
     - name: Grant execution rights
       run: chmod +x scripts/*.sh
     - name: Display version

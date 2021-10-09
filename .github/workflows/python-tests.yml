@@ -1,4 +1,4 @@
-name: Test workflow
+name: Python tests
 on:
   push:
     branches:
@@ -17,14 +17,6 @@ jobs:
   hello:
     runs-on: ubuntu-latest
     steps:
-    - name: Install system requirements via apt-get
-      run: |-
-        apt-get -y update && \
-        apt-get -y upgrade && \
-        apt-get install -y dos2unix && \
-        apt-get install -y apt-utils && \
-        apt-get install -y zip unzip xz-utils && \
-        apt-get clean
     - name: Grant execution rights
       run: chmod +x scripts/*.sh
     - name: Run setup
