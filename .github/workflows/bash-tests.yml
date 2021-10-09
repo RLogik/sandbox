@@ -1,0 +1,30 @@
+name: Test workflow
+on:
+  workflow_dispatch:
+    branches: [ master ]
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check current path
+      run: pwd
+    - name: Check what files exists
+      run: ls {.,*}
+    - name: Grant execution rights
+      run: chmod +x scripts/*.sh
+    - name: Display version
+      run: ./scripts/build.sh --mode version
+    - name: Check if artefact exists before creation
+      run: |-
+        ls;
+        ls dist/*;
+        [ -f dist/artefact.txt ] && echo "artefact exists" || echo "artefact does not exists";
+    - name: Create text artefact
+      run: ./scripts/build.sh --mode dist-text
+    - name: Check if artefact created
+      run: |-
+        ls;
+        ls dist/*;
+        [ -f dist/artefact.txt ] && echo "artefact exists" || echo "artefact does not exists";
+    - name: End of test
+      run: echo "End"
