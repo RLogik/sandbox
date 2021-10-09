@@ -71,7 +71,7 @@ jobs:
       run: cat ${{ env.artefact_path }}/${{ env.fname }}
     - name: Update artefact
       run: |-
-        echo "new content" >| ${{ env.artefact_path }}/${{ env.fname }}
+        echo "new content" >> ${{ env.artefact_path }}/${{ env.fname }}
     - name: Check content of artefact
       run: cat ${{ env.artefact_path }}/${{ env.fname }}
     - name: Reupload artefact
