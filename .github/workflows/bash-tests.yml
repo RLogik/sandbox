@@ -31,14 +31,18 @@ jobs:
       run: |-
         ls;
         ls ${{ env.artefact_path }}/*;
-        [ -f ${{ env.artefact_path }}/${{ env.fname }} ] && echo "artefact successfully created" || exit 1
+        if [ -f ${{ env.artefact_path }}/${{ env.fname }} ]; then
+          echo "artefact successfully created"
+        else
+          echo "artefact does not exist, as expected"
+        fi
     - name: Create text artefact
       run: ./scripts/build.sh --mode dist-text
     - name: Check if artefact created
       run: |-
         ls;
-        ls dist/*;
-        [ -f dist/artefact.txt ] && echo "artefact exists" || exit 1
+        ls ${{ env.artefact_path }}/*;
+        [ -f ${{ env.artefact_path }}/${{ env.fname }} ] && echo "artefact successfully created" || exit 1
     - name: Check content of artefact
       run: cat ${{ env.artefact_path }}/${{ env.fname }}
     - name: Upload artefact
