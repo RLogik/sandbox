@@ -93,7 +93,7 @@ function install_requirements_python() {
         line="$( _trim_trailing_comments "$line" )";
         [ "$line" == "" ] && continue;
         _log_info "Run \033[92;1mPIP\033[0m to install \033[93;1m$line\033[0m...";
-        ( call_pipinstall "$line" >> $VERBOSE ) && continue;
+        ( call_pipinstall "$line" ) && continue;
         has_problems=true;
         problem_packages+=( "$line" );
     done <<< "$( cat "$path" )";
