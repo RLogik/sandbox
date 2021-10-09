@@ -22,10 +22,12 @@ jobs:
         ref: master
     - name: Install system requirements via apt-get
       run: |-
-        apt-get install -y dos2unix
-        apt-get install -y apt-utils
-        apt-get install -y zip unzip xz-utils
-        apt-get clean
+        sudo apt-get -y update
+        sudo apt-get -y upgrade
+        sudo apt-get install -y dos2unix
+        sudo apt-get install -y apt-utils
+        sudo apt-get install -y zip unzip xz-utils
+        sudo apt-get clean
     - name: Grant execution rights
       run: chmod +x scripts/*.sh
     - name: Run setup
