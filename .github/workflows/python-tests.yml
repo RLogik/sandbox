@@ -22,8 +22,6 @@ jobs:
         ref: master
     - name: Install system requirements via apt-get
       run: |-
-        sudo apt-get -y update
-        sudo apt-get -y upgrade
         sudo apt-get install -y dos2unix
         sudo apt-get install -y apt-utils
         sudo apt-get install -y zip unzip xz-utils
